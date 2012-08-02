@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'git/dropbox'
 
 describe Git::Dropbox do
   it "should have a VERSION constant" do

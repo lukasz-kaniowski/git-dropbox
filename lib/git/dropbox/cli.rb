@@ -5,21 +5,18 @@ module Git
     class CLI < Thor
 
 
-
       desc 'sync', 'Syncs current git repository to dropbox folder'
 
       def sync
-        Repository.new({}).sync(".")
+        config = Git::Dropbox::Config.load
+        Repository.new(config).sync(Dir.pwd)
       end
 
-      private
-      def create_dropbox
-        config = load_configuration
-        Git::Dropbox.new(config)
-      end
+      desc 'init', 'Initialize this gem'
 
-      def load_configuration
-        {}
+      def init
+        folder = "#{ENV['HOME']}/Dropbox/git"
+        Git::Dropbox::Config.init!(folder)
       end
 
 

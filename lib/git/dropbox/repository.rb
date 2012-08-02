@@ -6,9 +6,12 @@ class Repository
     @config = config
   end
 
-  def sync(dir)
-    puts "About to sync #{dir}"
+  def sync(repo)
+    puts "About to sync #{repo}"
     system DROPBOX_GIT_CMD
+    @config['repositories'] ||= []
+    @config['repositories'] << repo
+    @config.save
   end
 
 end
