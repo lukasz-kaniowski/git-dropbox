@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+begin
+  require 'git/dropbox/cli'
+rescue LoadError => e
+warn 'Could not load "git/dropbox/cli"'
+  exit -1
+end
+
+Git::Dropbox::CLI.start
