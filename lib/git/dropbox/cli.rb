@@ -19,6 +19,13 @@ module Git
         Git::Dropbox::Config.init!(folder)
       end
 
+      desc "list", "Shows all repositories"
+
+      def list
+        config = Git::Dropbox::Config.load
+        config['repositories'].each { |r| puts r }
+      end
+
 
     end
   end

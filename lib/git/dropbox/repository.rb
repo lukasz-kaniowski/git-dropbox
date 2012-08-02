@@ -11,6 +11,7 @@ class Repository
     system DROPBOX_GIT_CMD
     @config['repositories'] ||= []
     @config['repositories'] << repo
+    @config['repositories'].uniq!
     @config.save
   end
 
