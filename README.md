@@ -7,7 +7,7 @@
 
 ## Description
 
-Gem mirrors your git repositorys in dropbox folder
+Gem mirrors your git repositorys in dropbox folder. It's based on shell script from this [repository](https://github.com/agnoster/git-dropbox)
 
 ## Features
 
