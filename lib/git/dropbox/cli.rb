@@ -4,18 +4,27 @@ module Git
   module Dropbox
     class CLI < Thor
 
-      DROPBOX_GIT_CMD = File.join(File.dirname(__FILE__), "git-dropbox-org.sh")
+
 
       desc 'sync', 'Syncs current git repository to dropbox folder'
 
       def sync
-        system DROPBOX_GIT_CMD
+        Repository.new({}).sync(".")
       end
+
+      private
+      def create_dropbox
+        config = load_configuration
+        Git::Dropbox.new(config)
+      end
+
+      def load_configuration
+        {}
+      end
+
 
     end
   end
 end
-
-#Git::Dropbox::CLI.start
 
 

@@ -3,9 +3,9 @@
 require 'rubygems'
 
 begin
-  require 'git/dropbox/cli'
+  require 'git/dropbox'
 rescue LoadError => e
-warn 'Could not load "git/dropbox/cli"'
+warn 'Could not load "git/dropbox"'
   exit -1
 end
 
