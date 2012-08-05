@@ -6,13 +6,15 @@ class Repository
     @config = config
   end
 
-  def sync(repo)
-    puts "About to sync #{repo}"
-    system DROPBOX_GIT_CMD
-    @config['repositories'] ||= []
-    @config['repositories'] << repo
-    @config['repositories'].uniq!
-    @config.save
+  def sync(repo, add_repo_to_list=true)
+    system "cd #{repo}; #{DROPBOX_GIT_CMD}"
+    if add_repo_to_list
+      @config['repositories'] ||= []
+      @config['repositories'] << repo
+      @config['repositories'].uniq!
+      @config.save
+    end
   end
+
 
 end

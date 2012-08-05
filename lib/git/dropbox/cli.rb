@@ -3,13 +3,19 @@ require "thor"
 module Git
   module Dropbox
     class CLI < Thor
+      include Thor::Actions
 
 
       desc 'sync', 'Syncs current git repository to dropbox folder'
+      method_options :all => false
 
       def sync
-        config = Git::Dropbox::Config.load
-        Repository.new(config).sync(Dir.pwd)
+        config = load_config
+        repositories = options[:all] ? config['repositories'] : [Dir.pwd]
+        repositories.each do |repo|
+          say "Synchronizing repository #{repo}"
+          Repository.new(config).sync(repo)
+        end
       end
 
       desc 'init', 'Initialize this gem'
@@ -22,8 +28,13 @@ module Git
       desc "list", "Shows all repositories"
 
       def list
-        config = Git::Dropbox::Config.load
+        config = load_config
         config['repositories'].each { |r| puts r }
+      end
+
+      private
+      def load_config
+        Git::Dropbox::Config.load
       end
 
 
