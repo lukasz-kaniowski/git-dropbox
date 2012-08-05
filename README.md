@@ -12,8 +12,8 @@ Gem mirrors your git repositorys in dropbox folder. It's based on shell script f
 ## Features
 
 1. Synchronizes single repo to dropbox
-2. Synchronizes all knows repos to dropbox
-3. Lists all knows repos
+2. Synchronizes all known repos to dropbox
+3. Lists all known repos
 4. Saves configuration in your dropbox folder `~/Dropbox/git/git-dropbox.yml`
 
 ## Examples
